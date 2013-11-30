@@ -11,7 +11,7 @@
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
 // }
 
-grails.project.groupId = com.yeeband // change this to alter the default package name and Maven publishing destination
+grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
 
 // The ACCEPT header will not be used for content negotiation for user agents containing the following strings (defaults to the 4 major rendering engines)
 grails.mime.disable.accept.header.userAgents = ['Gecko', 'WebKit', 'Presto', 'Trident']
@@ -95,36 +95,21 @@ environments {
 
 // log4j configuration
 log4j = {
-
-    appenders {
-        console name:'stdout', layout:pattern(conversionPattern: '%-d{yyyy-MM-dd HH:mm:ss}  [%t:%r] - [%p]  %m%n')
-        appender new org.apache.log4j.DailyRollingFileAppender(name: "file",threshold: org.apache.log4j.Level.INFO,layout:pattern(conversionPattern: '%-d{yyyy-MM-dd HH:mm:ss}  [%t:%r] - [%p]  %m%n'),file: "logs/system.log",datePattern:"'.'yyyy-MM-dd")
-        appender new org.apache.log4j.DailyRollingFileAppender(name: "error-file",threshold: org.apache.log4j.Level.ERROR,layout:pattern(conversionPattern: '%-d{yyyy-MM-dd HH:mm:ss}  [%t:%r] - [%p]  %m%n'),file: "logs/error.log",datePattern:"'.'yyyy-MM-dd")
-
-    }
-
-    root {
-        info 'stdout','file',"error-file"
-        additivity = true
-    }
+    // Example of changing the log pattern for the default console appender:
+    //
+    //appenders {
+    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
+    //}
 
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
-            'org.codehaus.groovy.grails.web.pages',          // GSP
-            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
-            'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
-            'org.codehaus.groovy.grails.web.mapping',        // URL mapping
-            'org.codehaus.groovy.grails.commons',            // core / classloading
-            'org.codehaus.groovy.grails.plugins',            // plugins
-            'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
-            'org.springframework',
-            'org.hibernate',
-            'net.sf.ehcache.hibernate'
-    info   'com.yeeband'
+           'org.codehaus.groovy.grails.web.pages',          // GSP
+           'org.codehaus.groovy.grails.web.sitemesh',       // layouts
+           'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
+           'org.codehaus.groovy.grails.web.mapping',        // URL mapping
+           'org.codehaus.groovy.grails.commons',            // core / classloading
+           'org.codehaus.groovy.grails.plugins',            // plugins
+           'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
+           'org.springframework',
+           'org.hibernate',
+           'net.sf.ehcache.hibernate'
 }
-
-grails.app.context = "/"
-
-// load config from
-grails.config.locations =
-    ["file:${userHome}/.grails/${appName}-config.groovy",
-            "file:${userHome}/.grails/${appName}-dataSource.groovy"]
