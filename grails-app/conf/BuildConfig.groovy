@@ -61,6 +61,7 @@ grails.project.dependency.resolution = {
         compile ':mail:1.0'
         compile ':scaffolding:2.0.0'
         compile ":twitter-bootstrap:3.0.2"
+        compile ":twitter-typeahead:0.9.3.2"
 
         // plugins needed at runtime but not for compilation
         runtime ":hibernate:3.6.10.4" // or ":hibernate4:4.1.11.4"

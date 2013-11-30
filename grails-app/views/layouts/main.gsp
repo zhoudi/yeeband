@@ -30,59 +30,32 @@
 
 <body>
 
-<nav class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container-fluid">
-
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-
-            <a class="brand" href="${createLink(uri: '/')}">Yeeband</a>
-
-            <div class="nav-collapse">
-                <ul class="nav">
-                    <li<%=request.forwardURI == "${createLink(uri: '/')}" ? ' class="active"' : ''%>><a
-                            href="${createLink(uri: '/')}"><i class="icon-home"></i> Home</a></li>
-
-                    %{--<div class="pull-right">--}%
-                        %{--<ul class="nav pull-right">--}%
-                            %{--<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cog"></i> 管理 <b class="caret"></b></a>--}%
-                                %{--<ul class="dropdown-menu">--}%
-                                    %{--<li<%=request.forwardURI == "${createLink(uri: '/mockDataDefinition/list')}" ? ' class="active"' : ''%>>--}%
-                                        %{--<g:link controller="mockDataDefinition/index">Data define Admin</g:link></li>--}%
-                                    %{--<li<%=request.forwardURI == "${createLink(uri: '/mockBind/list')}" ? ' class="active"' : ''%>>--}%
-                                        %{--<g:link controller="mockBind/index">Bind Admin</g:link></li>--}%
-                                    %{--<li<%=request.forwardURI == "${createLink(uri: '/mockUser/list')}" ? ' class="active"' : ''%>>--}%
-                                        %{--<g:link controller="mockUser/index">User Admin</g:link></li>--}%
-                                    %{--<li<%=request.forwardURI == "${createLink(uri: '/mockBindValue/list')}" ? ' class="active"' : ''%>>--}%
-                                        %{--<g:link controller="mockBindValue/index">User value Admin</g:link></li>--}%
-                                %{--</ul>--}%
-                            %{--</li>--}%
-                        %{--</ul>--}%
-                    %{--</div>--}%
-
-
-                    %{--<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName }}">--}%
-                        %{--<li<%=c.logicalPropertyName == controllerName ? ' class="active"' : ''%>><g:link--}%
-                                %{--controller="${c.logicalPropertyName}">${c.naturalName}</g:link></li>--}%
-                    %{--</g:each>--}%
-
-                </ul>
-            </div>
-            %{--<g:form controller="search" action="index" class="navbar-form form-search pull-right">--}%
-                %{--<div class="input-append">--}%
-                    %{--<input class="span2 search-query" type="text" placeholder="请输入" name="q">--}%
-                    %{--<g:textField name="q" class="span2 search-query" placeholder="请输入"/>--}%
-                    %{--<g:submitButton  name="search" class="btn" style="padding:8px,12px" value="查询" />--}%
-                    %{--<button class="btn" type="submit">查询</button>--}%
-                %{--</div>--}%
-            %{--</g:form>--}%
-        </div>
+<nav class="navbar navbar-default" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="${createLink(uri: '/')}">Yeeband</a>
     </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li<%=request.forwardURI == "${createLink(uri: '/')}" ? ' class="active"' : ''%>><a
+                    href="${createLink(uri: '/')}"><i class="icon-home"></i> Home</a></li>
+
+            <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName }}">
+                <li<%=c.logicalPropertyName == controllerName ? ' class="active"' : ''%>><g:link
+                        controller="${c.logicalPropertyName}">${c.naturalName}</g:link></li>
+            </g:each>
+        </ul>
+    </div><!-- /.navbar-collapse -->
 </nav>
+
 
 <div class="container-fluid">
     <g:layoutBody/>
