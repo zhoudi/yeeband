@@ -114,7 +114,6 @@ log4j = {
            'net.sf.ehcache.hibernate'
 }
 
-grails.plugin.springsecurity.password.algorithm='bcrypt'
 
 grails.plugin.databasemigration.changelogLocation = "changelogs"
 
@@ -122,3 +121,12 @@ grails.plugin.databasemigration.changelogLocation = "changelogs"
 grails.config.locations =
     ["file:${userHome}/.grails/${appName}-config.groovy",
             "file:${userHome}/.grails/${appName}-dataSource.groovy"]
+
+grails.app.context = "/"
+
+grails.plugin.springsecurity.password.algorithm='bcrypt'
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'yeeband.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'yeeband.UserRole'
+grails.plugin.springsecurity.authority.className = 'yeeband.Role'
+grails.plugin.springsecurity.requestMap.className = 'yeeband.Requestmap'
+grails.plugin.springsecurity.securityConfigType = 'Requestmap'
