@@ -1,6 +1,7 @@
 import yeeband.Role
 import yeeband.User
 import yeeband.UserRole
+import yeeband.UserType
 
 class BootStrap {
 
@@ -11,10 +12,10 @@ class BootStrap {
             def adminRole = new Role(authority: 'ROLE_ADMIN').save(flush: true)
             def userRole = new Role(authority: 'ROLE_USER').save(flush: true)
 
-            def initUser = new User(username: 'user', enabled: true, password: 'user', email: 'user@yeeband.com')
+            def initUser = new User(username: 'user', enabled: true, password: 'user', email: 'user@yeeband.com',userType: UserType.User)
             initUser.save(flush: true)
 
-            def initAdmin = new User(username: 'admin', enabled: true, password: 'admin', email: 'admin@yeeband.com')
+            def initAdmin = new User(username: 'admin', enabled: true, password: 'admin', email: 'admin@yeeband.com',userType: UserType.User)
             initAdmin.save(flush: true)
 
             UserRole.create initUser, userRole, true
