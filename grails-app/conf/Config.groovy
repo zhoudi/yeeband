@@ -129,10 +129,10 @@ grails.plugin.springsecurity.userLookup.userDomainClassName = 'yeeband.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'yeeband.UserRole'
 grails.plugin.springsecurity.authority.className = 'yeeband.Role'
 grails.plugin.springsecurity.requestMap.className = 'yeeband.Requestmap'
-grails.plugin.springsecurity.securityConfigType = 'Requestmap'
 grails.plugin.springsecurity.controllerAnnotations.staticRules =[
         '/aclClass/**': ['ROLE_ADMIN'],
         '/aclSid/**': ['ROLE_ADMIN'],
+        '/**': ['ROLE_ADMIN'],
         '/aclObjectIdentity/**': ['ROLE_ADMIN'],
         '/aclEntry/**': ['ROLE_ADMIN'],
         '/persistentLogin/**': ['ROLE_ADMIN'],
