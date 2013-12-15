@@ -14,6 +14,8 @@
  */
 package yeeband
 
+import org.apache.commons.lang.StringUtils
+
 /**
  * @author <a href='mailto:burt@burtbeckwith.com'>Burt Beckwith</a>
  */
@@ -38,5 +40,49 @@ class SecurityUiTagLib extends grails.plugin.springsecurity.ui.SecurityUiTagLib{
 			});
 		"""
         writeDocumentReady writer, javascript
+    }
+
+    def form = { attrs, body ->
+        boolean center = attrs.remove('center') == 'true'
+        boolean resizeable = attrs.remove('resizeable') != 'false'
+        def width = getRequiredAttribute(attrs, 'width', 'form')
+        if (width.endsWith('%')) {
+            center = true
+            resizeable = true
+        }
+        else {
+            width = width.toInteger().toString() + 'px'
+        }
+        int height = getRequiredAttribute(attrs, 'height', 'form').toInteger()
+        String titleCode = getRequiredAttribute(attrs, 'titleCode', 'form')
+        def titleCodeArgs = attrs.remove('titleCodeArgs')
+        String elementId = getRequiredAttribute(attrs, 'elementId', 'form')
+
+        String classes = getRequiredAttribute(attrs, 'class', 'form')
+        if (StringUtils.isBlank(classes)) {
+            classes = "ui-widget-content"
+        }
+        if (center) classes += ' s2ui_center'
+
+        String title = titleCodeArgs ? message(code: titleCode, args: titleCodeArgs) : message(code: titleCode)
+
+        out << """
+		<div class="$classes" id="${elementId}"
+		     style="width: ${width}; height: ${height}px; padding: 5px; text-align: center; position: relative;">
+
+		<div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix s2ui_center" style='padding: 10px'>
+		<span style="-moz-user-select: none;" unselectable="on" class="ui-dialog-title">
+		${title}
+		</span>
+		</div>
+
+		${body()}
+
+		</div>
+		"""
+
+        if (resizeable) {
+            writeDocumentReady out, "\$('#${elementId}').resizable();"
+        }
     }
 }

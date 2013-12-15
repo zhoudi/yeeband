@@ -1,47 +1,48 @@
 <html>
 
 <head>
-<title><g:message code='spring.security.ui.forgotPassword.title'/></title>
-<meta name='layout' content='register'/>
+    <link rel="stylesheet" href="${resource(dir: 'css', file: 'custom.css')}" type="text/css">
+    <meta name="layout" content="main"/>
 </head>
 
 <body>
 
 <p/>
 
-<s2ui:form width='400' height='220' elementId='forgotPasswordFormContainer'
-           titleCode='spring.security.ui.forgotPassword.header' center='true'>
+<div class="jumbotron">
 
-	<g:form action='forgotPassword' name="forgotPasswordForm" autocomplete='off'>
+    <s2ui:form width='400' height='220' elementId='forgotPasswordFormContainer'
+               titleCode='spring.security.ui.forgotPassword.header' center='true' class = 'jumbotron'>
 
-	<g:if test='${emailSent}'>
-	<br/>
-	<g:message code='spring.security.ui.forgotPassword.sent'/>
-	</g:if>
+        <g:form action='forgotPassword' name="forgotPasswordForm" autocomplete='off'>
 
-	<g:else>
+            <g:if test='${emailSent}'>
+                <br/>
+                <g:message code='spring.security.ui.forgotPassword.sent'/>
+            </g:if>
 
-	<br/>
-	<h4><g:message code='spring.security.ui.forgotPassword.description'/></h4>
+            <g:else>
 
-	<table>
-		<tr>
-			<td><label for="username"><g:message code='spring.security.ui.forgotPassword.username'/></label></td>
-			<td><g:textField name="username" size="25" /></td>
-		</tr>
-	</table>
+                <br/>
+                <h4><g:message code='spring.security.ui.forgotPassword.description'/></h4>
 
-	<s2ui:submitButton elementId='reset' form='forgotPasswordForm' messageCode='spring.security.ui.forgotPassword.submit'/>
+                <div class="form-group">
+                    <label class="sr-only" for="username"><g:message code='spring.security.ui.forgotPassword.username'/></label>
+                    <input type="email" class="form-control" id="username" name="j_username" placeholder="Enter email">
+                </div>
 
-	</g:else>
+                <s2ui:submitButton elementId='reset' form='forgotPasswordForm'
+                                   messageCode='spring.security.ui.forgotPassword.submit'/>
 
-	</g:form>
-</s2ui:form>
+            </g:else>
 
+        </g:form>
+    </s2ui:form>
+</div>
 <script>
-$(document).ready(function() {
-	$('#username').focus();
-});
+    $(document).ready(function () {
+        $('#username').focus();
+    });
 </script>
 
 </body>

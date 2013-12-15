@@ -1,6 +1,6 @@
 databaseChangeLog = {
 
-	changeSet(author: "zhoudi (generated)", id: "1386599088202-1") {
+	changeSet(author: "zhoudi (generated)", id: "1387101485451-1") {
 		createTable(tableName: "persistent_logins") {
 			column(name: "series", type: "varchar(64)") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "persistent_loPK")
@@ -20,7 +20,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "zhoudi (generated)", id: "1386599088202-2") {
+	changeSet(author: "zhoudi (generated)", id: "1387101485451-2") {
 		createTable(tableName: "registration_code") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "registration_PK")
@@ -40,7 +40,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "zhoudi (generated)", id: "1386599088202-3") {
+	changeSet(author: "zhoudi (generated)", id: "1387101485451-3") {
 		createTable(tableName: "requestmap") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "requestmapPK")
@@ -62,7 +62,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "zhoudi (generated)", id: "1386599088202-4") {
+	changeSet(author: "zhoudi (generated)", id: "1387101485451-4") {
 		createTable(tableName: "role") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "rolePK")
@@ -78,7 +78,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "zhoudi (generated)", id: "1386599088202-5") {
+	changeSet(author: "zhoudi (generated)", id: "1387101485451-5") {
 		createTable(tableName: "user") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "userPK")
@@ -93,10 +93,6 @@ databaseChangeLog = {
 			}
 
 			column(name: "account_locked", type: "bit") {
-				constraints(nullable: "false")
-			}
-
-			column(name: "email", type: "varchar(255)") {
 				constraints(nullable: "false")
 			}
 
@@ -122,7 +118,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "zhoudi (generated)", id: "1386599088202-6") {
+	changeSet(author: "zhoudi (generated)", id: "1387101485451-6") {
 		createTable(tableName: "user_role") {
 			column(name: "role_id", type: "bigint") {
 				constraints(nullable: "false")
@@ -134,11 +130,11 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "zhoudi (generated)", id: "1386599088202-7") {
+	changeSet(author: "zhoudi (generated)", id: "1387101485451-7") {
 		addPrimaryKey(columnNames: "role_id, user_id", constraintName: "user_rolePK", tableName: "user_role")
 	}
 
-	changeSet(author: "zhoudi (generated)", id: "1386599088202-10") {
+	changeSet(author: "zhoudi (generated)", id: "1387101485451-10") {
 		createIndex(indexName: "unique_url", tableName: "requestmap", unique: "true") {
 			column(name: "http_method")
 
@@ -146,35 +142,35 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "zhoudi (generated)", id: "1386599088202-11") {
-		createIndex(indexName: "authority_uniq_1386599088134", tableName: "role", unique: "true") {
+	changeSet(author: "zhoudi (generated)", id: "1387101485451-11") {
+		createIndex(indexName: "authority_uniq_1387101485200", tableName: "role", unique: "true") {
 			column(name: "authority")
 		}
 	}
 
-	changeSet(author: "zhoudi (generated)", id: "1386599088202-12") {
-		createIndex(indexName: "username_uniq_1386599088136", tableName: "user", unique: "true") {
+	changeSet(author: "zhoudi (generated)", id: "1387101485451-12") {
+		createIndex(indexName: "username_uniq_1387101485206", tableName: "user", unique: "true") {
 			column(name: "username")
 		}
 	}
 
-	changeSet(author: "zhoudi (generated)", id: "1386599088202-13") {
+	changeSet(author: "zhoudi (generated)", id: "1387101485451-13") {
 		createIndex(indexName: "FK143BF46A402D6B5A", tableName: "user_role") {
 			column(name: "user_id")
 		}
 	}
 
-	changeSet(author: "zhoudi (generated)", id: "1386599088202-14") {
+	changeSet(author: "zhoudi (generated)", id: "1387101485451-14") {
 		createIndex(indexName: "FK143BF46A9B02A77A", tableName: "user_role") {
 			column(name: "role_id")
 		}
 	}
 
-	changeSet(author: "zhoudi (generated)", id: "1386599088202-8") {
+	changeSet(author: "zhoudi (generated)", id: "1387101485451-8") {
 		addForeignKeyConstraint(baseColumnNames: "role_id", baseTableName: "user_role", constraintName: "FK143BF46A9B02A77A", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "role", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "zhoudi (generated)", id: "1386599088202-9") {
+	changeSet(author: "zhoudi (generated)", id: "1387101485451-9") {
 		addForeignKeyConstraint(baseColumnNames: "user_id", baseTableName: "user_role", constraintName: "FK143BF46A402D6B5A", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "user", referencesUniqueColumn: "false")
 	}
 }

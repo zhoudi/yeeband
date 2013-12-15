@@ -17,8 +17,8 @@
             %{--<div class="sign-in">--}%
 
             <div class="form-group">
-                <label class="sr-only" for="email">Email address</label>
-                <input type="text" class="form-control" id="email" placeholder="Enter email">
+                <label class="sr-only" for="username">Email address</label>
+                <input type="email" class="form-control" id="username" name="j_username" placeholder="Enter email">
             </div>
             <div class="form-group">
                 <label class="sr-only" for="password">Password</label>
