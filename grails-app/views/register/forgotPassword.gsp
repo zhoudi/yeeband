@@ -28,7 +28,7 @@
 
                 <div class="form-group">
                     <label class="sr-only" for="username"><g:message code='spring.security.ui.forgotPassword.username'/></label>
-                    <input type="email" class="form-control" id="username" name="j_username" placeholder="Enter email">
+                    <g:textField name="username" size="25" class="form-control" placeholder="Enter email" />
                 </div>
 
                 <s2ui:submitButton elementId='reset' form='forgotPasswordForm'

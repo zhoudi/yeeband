@@ -1,43 +1,48 @@
 <html>
 
 <head>
-<title><g:message code='spring.security.ui.resetPassword.title'/></title>
-<meta name='layout' content='register'/>
+    <link rel="stylesheet" href="${resource(dir: 'css', file: 'custom.css')}" type="text/css">
+    <meta name="layout" content="main"/>
 </head>
 
 <body>
 
 <p/>
 
-<s2ui:form width='475' height='250' elementId='resetPasswordFormContainer'
-           titleCode='spring.security.ui.resetPassword.header' center='true'>
+<div class="jumbotron">
 
-	<g:form action='resetPassword' name='resetPasswordForm' autocomplete='off'>
-	<g:hiddenField name='t' value='${token}'/>
-	<div class="sign-in">
+    <s2ui:form width='400' height='250' elementId='resetPasswordFormContainer'
+               titleCode='spring.security.ui.resetPassword.header' center='true' class='jumbotron'>
 
-	<br/>
-	<h4><g:message code='spring.security.ui.resetPassword.description'/></h4>
+        <g:form action='resetPassword' name='resetPasswordForm' autocomplete='off'>
+            <g:hiddenField name='t' value='${token}'/>
+            <div class="sign-in">
 
-	<table>
-		<s2ui:passwordFieldRow name='password' labelCode='resetPasswordCommand.password.label' bean="${command}"
-                             labelCodeDefault='Password' value="${command?.password}"/>
+                <br/>
+                <h4><g:message code='spring.security.ui.resetPassword.description'/></h4>
 
-		<s2ui:passwordFieldRow name='password2' labelCode='resetPasswordCommand.password2.label' bean="${command}"
-                             labelCodeDefault='Password (again)' value="${command?.password2}"/>
-	</table>
+                <div class="form-group">
+                    <g:textField name="password" value="${command?.password}" size="25" class="form-control" placeholder="Password" />
+                </div>
 
-	<s2ui:submitButton elementId='reset' form='resetPasswordForm' messageCode='spring.security.ui.resetPassword.submit'/>
+                <div class="form-group">
+                    <g:textField name="password2" value="${command?.password2}" size="25" class="form-control" placeholder="Password (again)"/>
+                </div>
 
-	</div>
-	</g:form>
 
-</s2ui:form>
 
+                <s2ui:submitButton elementId='reset' form='resetPasswordForm'
+                                   messageCode='spring.security.ui.resetPassword.submit'/>
+
+            </div>
+        </g:form>
+
+    </s2ui:form>
+</div>
 <script>
-$(document).ready(function() {
-	$('#password').focus();
-});
+    $(document).ready(function () {
+        $('#password').focus();
+    });
 </script>
 
 </body>
