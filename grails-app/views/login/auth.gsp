@@ -15,11 +15,9 @@
         <form action='${postUrl}' method='POST' id="loginForm" name="loginForm" autocomplete='off'>
 
             <div class="form-group">
-                <label class="sr-only" for="username">Email address</label>
                 <input type="email" class="form-control" id="username" name="j_username" placeholder="Enter email">
             </div>
             <div class="form-group">
-                <label class="sr-only" for="password">Password</label>
                 <input type="password" class="form-control" id="password" name="j_password" placeholder="Password">
             </div>
             <div class="checkbox">

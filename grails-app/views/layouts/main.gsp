@@ -40,12 +40,26 @@
     <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
             <li<%=request.forwardURI == "${createLink(uri: '/')}" ? ' class="active"' : ''%>><a
-                    href="${createLink(uri: '/')}"><i class="icon-home"></i> Home</a></li>
+                    href="${createLink(uri: '/')}">Home</a></li>
 
-            %{--<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName }}">--}%
-                %{--<li<%=c.logicalPropertyName == controllerName ? ' class="active"' : ''%>><g:link--}%
-                        %{--controller="${c.logicalPropertyName}">${c.naturalName}</g:link></li>--}%
-            %{--</g:each>--}%
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <g:if test="${sec.loggedInUserInfo(field: 'username')}">
+
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+
+                    <sec:loggedInUserInfo field="username"/>
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <a href="/j_spring_security_logout"><span class="glyphicon glyphicon-log-out"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            </g:if>
         </ul>
     </div><!-- /.navbar-collapse -->
 </nav>

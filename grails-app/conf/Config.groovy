@@ -154,6 +154,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules =[
 grails.plugin.springsecurity.roleHierarchy = '''
      ROLE_ADMIN > ROLE_USER
 '''
+grails.plugin.springsecurity.logout.postOnly = false
 grails.plugin.springsecurity.rememberMe.persistent = true
 grails.plugin.springsecurity.rememberMe.persistentToken.domainClassName = 'yeeband.PersistentLogin'
 grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/'
