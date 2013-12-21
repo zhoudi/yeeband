@@ -15,11 +15,11 @@ class BootStrap {
             def initUser = new User(username: 'zhoudi77777@gmail.com', enabled: true, password: 'user', userType: UserType.User)
             initUser.save(flush: true)
 
-//            def initAdmin = new User(username: 'admin@yeeband.com', enabled: true, password: 'admin', userType: UserType.User)
-//            initAdmin.save(flush: true)
+            def initAdmin = new User(username: 'admin@yeeband.com', enabled: true, password: 'admin', userType: UserType.User)
+            initAdmin.save(flush: true)
 
             UserRole.create initUser, userRole, true
-//            UserRole.create initAdmin, adminRole, true
+            UserRole.create initAdmin, adminRole, true
         }
 
     }

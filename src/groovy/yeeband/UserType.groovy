@@ -1,5 +1,7 @@
 package yeeband
 
+import org.apache.commons.lang.StringUtils
+
 /**
  * 用户类型,用来表示用户所属类别
  *
@@ -30,4 +32,18 @@ public enum UserType {
         return id;
     }
 
+    public String getId() {
+        return id
+    }
+
+    public static UserType getById(String id) {
+        if (StringUtils.isNotBlank(id)) {
+            for (UserType userType : values()) {
+                if (userType.getId().equals(id)) {
+                    return userType;
+                }
+            }
+        }
+        return null;
+    }
 }

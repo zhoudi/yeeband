@@ -140,6 +140,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules =[
         '/aclClass/**': ['ROLE_ADMIN'],
         '/aclSid/**': ['ROLE_ADMIN'],
         '/**': ['ROLE_ADMIN'],
+        '/**': ['ROLE_USER'],
         '/aclObjectIdentity/**': ['ROLE_ADMIN'],
         '/aclEntry/**': ['ROLE_ADMIN'],
         '/persistentLogin/**': ['ROLE_ADMIN'],
@@ -150,6 +151,9 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules =[
         '/console/**': ['ROLE_ADMIN'],
         '/register/**': ['IS_AUTHENTICATED_ANONYMOUSLY']
 ]
+grails.plugin.springsecurity.roleHierarchy = '''
+     ROLE_ADMIN > ROLE_USER
+'''
 grails.plugin.springsecurity.rememberMe.persistent = true
 grails.plugin.springsecurity.rememberMe.persistentToken.domainClassName = 'yeeband.PersistentLogin'
 grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/'
@@ -157,8 +161,8 @@ grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/'
 
 grails.plugin.springsecurity.ui.encodePassword = false
 grails.plugin.springsecurity.ui.password.minLength=6
-grails.plugin.springsecurity. ui.password.maxLength=64
-grails.plugin.springsecurity.ui.password.validationRegex='^.*(?=.*\\d)(?=.*[a-zA-Z]).*$'
+grails.plugin.springsecurity.ui.password.maxLength=64
+grails.plugin.springsecurity.ui.password.validationRegex='^.*$'
 grails.plugin.springsecurity.ui.register.emailSubject = 'ui.register.email.subject'
 grails.plugin.springsecurity.ui.register.emailBody = 'ui.register.email.body'
 grails.plugin.springsecurity.ui.forgotPassword.emailBody = 'ui.forgot.password.email.body'
