@@ -42,8 +42,6 @@
         $('#username').focus();
     });
 
-<s2ui:initCheckboxes/>
-
 </script>
 
 </body>
